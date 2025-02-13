@@ -41,3 +41,5 @@ Then, run the development server:
 ```bash
 yarn dev
 ```
+
+NOTE: The API that I`ve used already exceeded todays quota
