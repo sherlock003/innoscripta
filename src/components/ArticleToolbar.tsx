@@ -56,7 +56,7 @@ const ArticleToolbar = ({
   };
 
   return (
-    <form onSubmit={onSearch}>
+    <form noValidate onSubmit={onSearch}>
       <Stack
         sx={{
           flexDirection: { xs: 'column-reverse', sm: 'row' },

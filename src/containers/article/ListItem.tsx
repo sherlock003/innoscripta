@@ -44,7 +44,9 @@ const ArticleListItem = ({ item }: Props) => {
           <Typography variant="caption" color="textSecondary">
             {item.url}
           </Typography>
-          <Typography sx={{ mt: 2 }}>{item.summary}</Typography>
+          <Box mt={2}>
+            <div dangerouslySetInnerHTML={{ __html: item.summary }} />
+          </Box>
         </Box>
 
         <Divider />
