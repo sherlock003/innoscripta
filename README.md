@@ -1,6 +1,6 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and [`material-ui`](https://mui.com/) for UI Design.
 
-## Getting Started
+## Running application (Non Docker)
 
 First, install node_modules:
 
@@ -14,18 +14,22 @@ Then, run the development server:
 yarn dev
 ```
 
-## Docker
+## Running application (via Docker)
 
-Docker up
+First, install docker
+
+https://www.docker.com/products/docker-desktop/
+
+Turn on docker and run this command from the root folder
 
 ```bash
 docker-compose up -d
 ```
 
-Docker down
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+Shutting down docker
 
 ```bash
 docker-compose down
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
