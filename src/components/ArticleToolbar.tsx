@@ -112,7 +112,7 @@ const ArticleToolbar = ({
                   <Datepicker
                     label="Start date"
                     disableFuture
-                    value={from ? new Date(from) : ''}
+                    value={from ? new Date(from) : null}
                     onChange={(newValue: string) => setFieldFrom(newValue)}
                     slotProps={{
                       textField: { fullWidth: true },
@@ -127,7 +127,7 @@ const ArticleToolbar = ({
                   <Datepicker
                     label="End date"
                     disableFuture
-                    value={end ? new Date(end) : ''}
+                    value={end ? new Date(end) : null}
                     onChange={(newValue: string) => setFieldEnd(newValue)}
                     slotProps={{
                       textField: { fullWidth: true },
