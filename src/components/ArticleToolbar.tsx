@@ -29,18 +29,16 @@ type Props = QueryParams & {
 
 const ArticleToolbar = ({
   article,
-  author,
-  from,
-  end,
-  sortBy = SortBy.RELEVANCE,
+  from = '',
+  end = '',
+  sortBy,
   onFilter,
 }: Props) => {
   const sortRef = useRef<HTMLInputElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const authorRef = useRef<HTMLInputElement>(null);
   const [fieldEnd, setFieldEnd] = useState(end);
   const [fieldFrom, setFieldFrom] = useState(from);
-  const [fieldSort, setFieldSort] = useState(sortBy);
+  const [fieldSort, setFieldSort] = useState(sortBy ?? SortBy.RELEVANCE);
   const [advancedFilter, setAdvancedFilter] = useState(false);
 
   const toggleAdvanceFilter = () => {
@@ -51,7 +49,6 @@ const ArticleToolbar = ({
     e.preventDefault();
     onFilter?.({
       article: searchRef.current?.value,
-      author: authorRef.current?.value,
       from: fieldFrom,
       end: fieldEnd,
       sortBy: fieldSort,
@@ -89,15 +86,6 @@ const ArticleToolbar = ({
               </StackItem>
 
               <StackItem>
-                <Input
-                  fullWidth
-                  placeholder="Author"
-                  inputRef={authorRef}
-                  defaultValue={author}
-                />
-              </StackItem>
-
-              <StackItem>
                 <Select
                   value={fieldSort}
                   inputRef={sortRef}
@@ -124,7 +112,7 @@ const ArticleToolbar = ({
                   <Datepicker
                     label="Start date"
                     disableFuture
-                    value={from ? new Date(from) : null}
+                    value={from ? new Date(from) : ''}
                     onChange={(newValue: string) => setFieldFrom(newValue)}
                     slotProps={{
                       textField: { fullWidth: true },
@@ -139,7 +127,7 @@ const ArticleToolbar = ({
                   <Datepicker
                     label="End date"
                     disableFuture
-                    value={end ? new Date(end) : null}
+                    value={end ? new Date(end) : ''}
                     onChange={(newValue: string) => setFieldEnd(newValue)}
                     slotProps={{
                       textField: { fullWidth: true },

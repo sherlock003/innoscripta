@@ -41,7 +41,7 @@ const AppBar = () => {
     >
       <Toolbar>
         <Box mr={2}>{renderMenu()}</Box>
-        <Box sx={{ flexGrow: 1, display: 'flex' }}>
+        <Box flexGrow={1} display="flex">
           {routes.map((page) => (
             <NavItem
               LinkComponent={Link}

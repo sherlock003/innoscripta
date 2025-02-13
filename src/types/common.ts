@@ -23,7 +23,6 @@ export type FilterQuery = {
 
 export type QueryParams = {
   article?: string | null;
-  author?: string | null;
   from?: string | null;
   end?: string | null;
   page?: string | null;

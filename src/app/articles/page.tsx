@@ -20,7 +20,6 @@ export default function Page() {
   const queries = useMemo(
     (): QueryParams => ({
       article: searchParams.get('q'),
-      author: searchParams.get('author'),
       end: searchParams.get('end'),
       from: searchParams.get('from'),
       page: searchParams.get('page'),
@@ -38,7 +37,6 @@ export default function Page() {
   const onFilter = (fields: QueryParams) => {
     const queryParams = new URLSearchParams();
     if (fields.article) queryParams.set('q', fields.article);
-    if (fields.author) queryParams.set('author', fields.author);
     if (fields.from) queryParams.set('from', fields.from);
     if (fields.end) queryParams.set('end', fields.end);
     if (fields.sortBy) queryParams.set('sortBy', fields.sortBy);
@@ -49,7 +47,7 @@ export default function Page() {
     <>
       <Toolbar sx={{ bgcolor: theme.palette.background.paper }} />
       <Box py={3} boxShadow={1} bgcolor={theme.palette.background.paper}>
-        <Container maxWidth="xl">
+        <Container maxWidth="lg">
           <ArticleToolbar {...queries} onFilter={onFilter} />
 
           {queries?.article && (
@@ -60,7 +58,7 @@ export default function Page() {
         </Container>
       </Box>
 
-      <Container maxWidth="xl">
+      <Container maxWidth="lg">
         <Box mb={2}>
           <ArticleList {...queries} onPaginationChange={onPaginationChange} />
         </Box>

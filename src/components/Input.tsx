@@ -1,9 +1,8 @@
 'use client';
 
-import { memo } from 'react';
-
 import InputBase from '@mui/material/InputBase';
 import { styled } from '@mui/material/styles';
+import { memo } from 'react';
 
 const Input = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
