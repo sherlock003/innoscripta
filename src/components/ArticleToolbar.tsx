@@ -49,8 +49,8 @@ const ArticleToolbar = ({
     e.preventDefault();
     onFilter?.({
       article: searchRef.current?.value,
-      from: fieldFrom,
-      end: fieldEnd,
+      from: fieldFrom ? new Date(fieldFrom).toISOString() : undefined,
+      end: fieldEnd ? new Date(fieldEnd).toISOString() : undefined,
       sortBy: fieldSort,
     });
   };
