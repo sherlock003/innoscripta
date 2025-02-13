@@ -1,20 +1,14 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app) and [`material-ui`](https://mui.com/) for UI Design.
 
-## Running application (Non Docker)
+### Libraries included
 
-First, install node_modules:
+- [`material-ui`](https://mui.com/)
+- [`axios`](https://www.npmjs.com/package/axios)
+- [`redux toolkit`](https://redux-toolkit.js.org/)
+- [`redux persist`](https://github.com/rt2zz/redux-persist)
+- [`date-fns`](https://date-fns.org/)
 
-```bash
-yarn
-```
-
-Then, run the development server:
-
-```bash
-yarn dev
-```
-
-## Running application (via Docker)
+### Running application (via Docker)
 
 First, install docker
 
@@ -32,4 +26,18 @@ Shutting down docker
 
 ```bash
 docker-compose down
+```
+
+### Running application (Non Docker)
+
+First, install node_modules:
+
+```bash
+yarn
+```
+
+Then, run the development server:
+
+```bash
+yarn dev
 ```
