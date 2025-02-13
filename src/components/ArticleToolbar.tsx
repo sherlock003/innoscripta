@@ -32,15 +32,16 @@ const ArticleToolbar = ({
   author,
   from,
   end,
-  sortBy,
+  sortBy = SortBy.RELEVANCE,
   onFilter,
 }: Props) => {
-  const [advancedFilter, setAdvancedFilter] = useState(false);
+  const sortRef = useRef<HTMLInputElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
   const authorRef = useRef<HTMLInputElement>(null);
-  const fromRef = useRef<HTMLInputElement>(null);
-  const endRef = useRef<HTMLInputElement>(null);
-  const sortRef = useRef<HTMLInputElement>(null);
+  const [fieldEnd, setFieldEnd] = useState(end);
+  const [fieldFrom, setFieldFrom] = useState(from);
+  const [fieldSort, setFieldSort] = useState(sortBy);
+  const [advancedFilter, setAdvancedFilter] = useState(false);
 
   const toggleAdvanceFilter = () => {
     setAdvancedFilter((prevState) => !prevState);
@@ -51,9 +52,9 @@ const ArticleToolbar = ({
     onFilter?.({
       article: searchRef.current?.value,
       author: authorRef.current?.value,
-      from: fromRef.current?.value,
-      end: endRef.current?.value,
-      sortBy: sortRef.current?.value as SortBy,
+      from: fieldFrom,
+      end: fieldEnd,
+      sortBy: fieldSort,
     });
   };
 
@@ -98,8 +99,11 @@ const ArticleToolbar = ({
 
               <StackItem>
                 <Select
-                  defaultValue={sortBy ?? SortBy.RELEVANCE}
+                  value={fieldSort}
                   inputRef={sortRef}
+                  onChange={(event) =>
+                    setFieldSort(event.target.value as SortBy)
+                  }
                   fullWidth
                 >
                   <MenuItem disabled>
@@ -119,19 +123,31 @@ const ArticleToolbar = ({
                 <StackItem flex={1}>
                   <Datepicker
                     label="Start date"
-                    defaultValue={from ? new Date(from) : null}
-                    inputRef={fromRef}
                     disableFuture
-                    slotProps={{ textField: { fullWidth: true } }}
+                    value={from ? new Date(from) : null}
+                    onChange={(newValue: string) => setFieldFrom(newValue)}
+                    slotProps={{
+                      textField: { fullWidth: true },
+                      field: {
+                        clearable: true,
+                        onClear: () => setFieldFrom(''),
+                      },
+                    }}
                   />
                 </StackItem>
                 <StackItem flex={1}>
                   <Datepicker
                     label="End date"
-                    defaultValue={end ? new Date(end) : null}
-                    inputRef={endRef}
                     disableFuture
-                    slotProps={{ textField: { fullWidth: true } }}
+                    value={end ? new Date(end) : null}
+                    onChange={(newValue: string) => setFieldEnd(newValue)}
+                    slotProps={{
+                      textField: { fullWidth: true },
+                      field: {
+                        clearable: true,
+                        onClear: () => setFieldEnd(''),
+                      },
+                    }}
                   />
                 </StackItem>
               </Stack>

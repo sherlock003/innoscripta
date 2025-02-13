@@ -55,8 +55,8 @@ const ArticleList = ({
       return (
         <>
           <Box sx={{ py: 2 }}>
-            {articles.map((item) => (
-              <ArticleListItem key={item.title} item={item} />
+            {articles.map((item, index) => (
+              <ArticleListItem key={`${item.title}-${index}`} item={item} />
             ))}
           </Box>
 
